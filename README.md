@@ -83,3 +83,24 @@ Use `npm run docs` to generate docs.
 
 The repo has one Github workflow that checks the linting rules and runs the tests (see `.github/workflows/test.yaml`).
 There are issue and PR templates in `.github`.
+
+### Docker
+
+Build and run the application in Docker using the commands below, then open your browser to `http://localhost:8080`.
+
+```bash
+docker build -t react-template:latest -f Dockerfile .
+docker run -ti --rm --name frontend \
+    -p 8080:80 \
+    react-template:latest
+```
+
+To run in development mode, where code changes are detected and the page is automatically updated, build the image and run the application using the commands below and open your browser to `http://localhost:8080`.
+
+```bash
+docker build -t react-template:dev -f Dockerfile-dev .
+docker run -ti --rm --name frontend \
+    -p 8080:8080 \
+    -v $(pwd)/src:/usr/src/app/src \
+    react-template:dev
+```

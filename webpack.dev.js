@@ -9,7 +9,7 @@ module.exports = merge(commonConfig, {
 
     devServer: {
         hot: true,
-        host: 'localhost',
+        host: process.env.DEVSERVER_HOST || 'localhost',
         port: 8080,
         inline: true,
         stats: 'minimal',

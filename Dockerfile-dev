@@ -1,0 +1,13 @@
+FROM node:14
+
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+
+ARG DEVSERVER_HOST='0.0.0.0'
+ENV DEVSERVER_HOST $DEVSERVER_HOST
+ARG ALLOWED_HOSTS='["all"]'
+ENV ALLOWED_HOSTS $ALLOWED_HOSTS
+CMD ["npm", "start"]
+
+COPY ./ /usr/src/app/
